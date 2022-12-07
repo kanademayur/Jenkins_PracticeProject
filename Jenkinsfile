@@ -17,13 +17,14 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image'){
+        stage('Push Selenium Docker Image'){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'user_id', variable: 'userName'), string(credentialsId: 'dockerhub-pwd', variable: 'password')]) {
                     sh 'docker login -u ${userName} -p ${password}'
+
+                    sh 'docker push ${userName}/selenium-docker'
                     }
-                    sh 'docker push mayurkanade/selenium-docker'
                 }
             }
         }
