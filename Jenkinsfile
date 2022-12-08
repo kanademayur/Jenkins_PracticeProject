@@ -12,10 +12,10 @@ pipeline {
         stage('Push Selenium Docker Image'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'username', variable: 'userId'), string(credentialsId: 'pwd', variable: 'passwd')]){
-                    sh 'docker login -u ${userID} -p ${passwd}'
-                    sh 'docker push ${userID}/springboot-1'
-}
+//                     withCredentials([string(credentialsId: 'username', variable: 'userId'), string(credentialsId: 'pwd', variable: 'passwd')]){
+                    sh 'docker login -u mayurkanade -p Password@1'
+                    sh 'docker push mayurkanade/springboot-1'
+// }
                 }
             }
         }
