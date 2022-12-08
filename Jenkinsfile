@@ -6,19 +6,18 @@ pipeline {
                 script{
                     checkout([$class: 'GitSCM', branches: [[name: '*/springboot1']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kanademayur/Jenkins_PracticeProject']]])
                     sh 'docker build -t mayurkanade/springboot-1 .'
-                }
+ }
             }
         }
         stage('Push Selenium Docker Image'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'username', variable: 'userId'), string(credentialsId: 'pwd', variable: 'passwd')]) {
+                    withCredentials([string(credentialsId: 'username', variable: 'userId'), string(credentialsId: 'pwd', variable: 'passwd')]){
                     sh 'docker login -u ${userID} -p ${passwd}'
-
                     sh 'docker push ${userID}/springboot-1'
-                    }
+}
                 }
             }
         }
-      }
     }
+ }
