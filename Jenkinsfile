@@ -4,6 +4,7 @@ pipeline {
         stage('Build Docker Image'){
             steps{
                 script{
+                    checkout([$class: 'GitSCM', branches: [[name: '*/springboot1']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kanademayur/Jenkins_PracticeProject']]])
                     sh 'docker build -t mayurkanade/springboot-1 .'
                 }
             }
